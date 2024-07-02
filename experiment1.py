@@ -5,14 +5,15 @@ from collections import deque
 import time
 
 
-env = gym.make('CartPole-v1')
+env = gym.make('Acrobot-v1')
+# env.unwrapped.book_or_nips = 'nips'
 print('observation space:', env.observation_space)
 print('action space:', env.action_space)
 threshold = env.spec.reward_threshold
 print('threshold: ', threshold)
 
 class Policy():
-    def __init__(self, s_size=4, a_size=2):
+    def __init__(self, s_size=6, a_size=3):
         self.w = 1e-4*np.random.rand(s_size, a_size)  # weights for simple linear policy: state_space x action_space
         
     def forward(self, state):
